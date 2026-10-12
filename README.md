@@ -47,11 +47,79 @@ The user's voice is captured through the mobile application and converted into t
 
 **Pipeline:**
 
-```text
-User Voice
-    ↓
-Microphone
-    ↓
-Whisper 3.2B
-    ↓
-Recognized Text
+                    ┌─────────────────────────┐
+                    │       MOBILE APP        │
+                    │                         │
+                    │   🔵 Tap & Speak        │
+                    │   🎙️ Voice Input       │
+                    └────────────┬────────────┘
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │   DJANGO + FLASK API    │
+                    │      Backend Layer      │
+                    └────────────┬────────────┘
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │    SPEECH TO TEXT       │
+                    │      Whisper 3.2B       │
+                    └────────────┬────────────┘
+                                 │
+                                 │ User Query
+                                 ▼
+              ┌────────────────────────────────────┐
+              │              RAG LAYER              │
+              │                                     │
+              │  Retrieve relevant information      │
+              │  from the Knowledge Base             │
+              └──────────────────┬─────────────────┘
+                                 │
+                    Relevant Context + Query
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │       LOCAL LLM         │
+                    │         3.2B             │
+                    │                         │
+                    │  Generate AI Response    │
+                    └────────────┬────────────┘
+                                 │
+                                 │ Response Text
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     TEXT TO SPEECH      │
+                    │   Kitten TTS / gTTS     │
+                    └────────────┬────────────┘
+                                 │
+                                 │ Voice Response
+                                 ▼
+                    ┌─────────────────────────┐
+                    │       MOBILE APP        │
+                    │                         │
+                    │   🔊 AI Voice Response  │
+                    └─────────────────────────┘
+
+
+       ┌────────────────────────────────────────────┐
+       │              RAG KNOWLEDGE BASE             │
+       │                                             │
+       │  📄 Documents   🌐 Web Data   📚 Custom Data│
+       │                                             │
+       └──────────────────────┬─────────────────────┘
+                              │
+                              ▼
+                         RAG Retriever
+                              │
+                              ▼
+                         Relevant Context
+
+
+                    ┌─────────────────────┐
+                    │     PostgreSQL      │
+                    │                     │
+                    │ • Users             │
+                    │ • Conversations     │
+                    │ • Chat History      │
+                    │ • Application Data  │
+                    └─────────────────────┘
