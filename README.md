@@ -79,7 +79,7 @@ boloyaarai/
 
 3. **Push your code to GitHub**:
    ```powershell
-   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/boloyaarai.git
+   git remote add origin https://github.com/prasunshamkule-lab/BoloYaar-AI.git
    git branch -M main
    git push -u origin main
    ```
@@ -102,8 +102,8 @@ ollama run llama3.2
 
 #### Step 3: Clone Your Repository
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/boloyaarai.git
-cd boloyaarai
+git clone https://github.com/prasunshamkule-lab/BoloYaar-AI.git
+cd BoloYaar-AI
 ```
 
 #### Step 4: Install Dependencies
