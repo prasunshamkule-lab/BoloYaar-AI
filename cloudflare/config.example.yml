@@ -1,0 +1,18 @@
+# BoloYaar AI — Cloudflare Tunnel Configuration Example
+# Copy or edit this file when setting up a tunnel on a new machine.
+# Replace YOUR_TUNNEL_UUID and yourdomain.com with your actual values.
+
+tunnel: YOUR_TUNNEL_UUID
+credentials-file: ~/.cloudflared/YOUR_TUNNEL_UUID.json
+
+ingress:
+  # Route subdomain to local Django (which serves frontend + proxies AI)
+  - hostname: boloyaar.yourdomain.com
+    service: http://localhost:8000
+    originRequest:
+      connectTimeout: 30s
+      keepAliveTimeout: 90s
+      httpHostHeader: boloyaar.yourdomain.com
+
+  # Catch-all rule (required by cloudflared)
+  - service: http_status:404

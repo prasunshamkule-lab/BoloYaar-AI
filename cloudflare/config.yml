@@ -1,0 +1,17 @@
+# BoloYaar AI — Cloudflare Tunnel Configuration
+# Tunnel: boloyaar.someshtech.world → localhost:8000 (Django serves frontend + API)
+
+tunnel: 06ec63cd-86f2-4ed5-bda8-da7295643795
+credentials-file: C:\Users\student\.cloudflared\06ec63cd-86f2-4ed5-bda8-da7295643795.json
+
+ingress:
+  # Main app — Django serves frontend (index.html) + all /api/ routes
+  - hostname: boloyaar.someshtech.world
+    service: http://localhost:8000
+    originRequest:
+      connectTimeout: 30s
+      keepAliveTimeout: 90s
+      httpHostHeader: boloyaar.someshtech.world
+
+  # Catch-all rule (required by cloudflared)
+  - service: http_status:404

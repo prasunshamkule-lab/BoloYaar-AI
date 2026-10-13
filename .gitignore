@@ -1,0 +1,78 @@
+# ===================================================================
+# BoloYaar AI — Git Ignore
+# ===================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets (Keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Databases
+*.sqlite3
+db.sqlite3
+*.db
+
+# Django Media & Static Collections
+media/
+staticfiles/
+
+# Test audio artifacts & caches
+*.mp3
+*.wav
+*.webm
+*.ogg
+backend/flask_ai/*.mp3
+backend/flask_ai/*.wav
+
+# Cloudflare Binaries & Tunnel Credentials
+cloudflared
+cloudflared.exe
+cloudflare/*.json
+cloudflare/*.pem
+*.pem
+
+# Editor & OS Artifacts
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Temp files
+tmp/
+temp/
